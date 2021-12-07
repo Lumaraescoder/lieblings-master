@@ -21,7 +21,7 @@ describe('ProductsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('be able to retrieve posts from the API bia GET', () => {
+  it('be able to retrieve posts from the API via GET', () => {
     const dummyPosts: Products[] = [
       {
         id: 1,
@@ -42,7 +42,7 @@ describe('ProductsService', () => {
         price: 123123,
         category: 'produtop',
         countInStock: 123,
-        description: 'desc',
+        description: 'desc1',
         rating: 123,
         numReviews: 123,
         reviews: []
@@ -54,19 +54,27 @@ describe('ProductsService', () => {
         price: 123123,
         category: 'produtop',
         countInStock: 123,
-        description: 'desc',
+        description: 'desc2',
         rating: 123,
         numReviews: 123,
         reviews: []
       }
     ];
 
-    service.getAll(1).subscribe(coursesData => {
-      expect(coursesData[0].name).toEqual('vegeta');
-      expect(coursesData[0].description).toEqual('Space repetition to learn chess, backed by science');
+    service.getAll(1).subscribe(ProductsData => {
+      expect(ProductsData[0].name).toEqual('lucas');
+      expect(ProductsData[0].description).toEqual('desc');
+
+      expect(ProductsData[1].name).toEqual('vegeta');
+      expect(ProductsData[1].description).toEqual('desc1');
+
+      expect(ProductsData[2].name).toEqual('goku');
+      expect(ProductsData[2].description).toEqual('desc2');
 
       const request = controller.expectOne('/');
       expect(request.request.method).toBe('GET');
+      const req = controller.expectOne('http://localhost:8000/countries');
+
       request.flush(dummyPosts);
     });
   });
