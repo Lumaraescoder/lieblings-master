@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch ./src/assets/mock-data/countries.json --port 8000"
+    "server": "json-server --watch ./src/assets/mock-data/user.json --port 8000"
   },
   "private": true,
   "dependencies": {

@@ -1,0 +1,16 @@
+{
+  "countries": [
+    {
+      "_id": 1,
+      "name": "goku",
+      "email": "goku@stronger.com.br",
+      "isAdmin": false
+    },
+    {
+      "_id": 2,
+      "name": "vegeta",
+      "email": "vegeta@maisfraco.com.br",
+      "isAdmin": false
+    }
+  ]
+}
