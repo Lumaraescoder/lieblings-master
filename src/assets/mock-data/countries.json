@@ -1,0 +1,40 @@
+{
+  "countries": [
+    {
+      "id": "1",
+      "name": "lucas",
+      "capital": "Helsinki",
+      "price": 123123,
+      "category": "produtop",
+      "countInStock": 123,
+      "description": "desc",
+      "rating": 123,
+      "numReviews": 123,
+      "reviews": []
+    },
+    {
+      "id": 2,
+      "name": "goku",
+      "capital": "Helsinki",
+      "price": 123123,
+      "category": "produtop",
+      "countInStock": 123,
+      "description": "desc",
+      "rating": 123,
+      "numReviews": 123,
+      "reviews": []
+    },
+    {
+      "id": 3,
+      "name": "vegeta",
+      "capital": "Helsinki",
+      "price": 123123,
+      "category": "produtop",
+      "countInStock": 123,
+      "description": "desc",
+      "rating": 123,
+      "numReviews": 123,
+      "reviews": []
+    }
+  ]
+}
