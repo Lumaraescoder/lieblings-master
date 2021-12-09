@@ -20,7 +20,7 @@ describe('UserService', () => {
     const service: UserService = TestBed.inject(UserService);
     expect(service).toBeTruthy();
   });
-  it('I will make get request into api', done => {
+  it('I will make get request into api', () => {
     const users: User[] = [
       {
         _id: 1,
