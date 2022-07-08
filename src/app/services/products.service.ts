@@ -1,18 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { Products } from '../models/products';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private baseUrl = 'http://localhost:8000/countries';
+  private baseUrl = 'https://fakestoreapi.com/products';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAll(products: any): Observable<Products> {
-    return this.http.get<Products>(this.baseUrl);
+
+  private handleErrors<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
+  }
+  getAllProducts() {
+    // let headers = new HttpHeaders().set('content-Type', 'applicatios/json');
+    // return this.http.get<Products[]>(this.baseUrl)
+    //   .pipe(
+    //     // tap(products => console.log(products)),
+    //     catchError(this.handleErrors<Products[]>('getHeroes', []))
+    //   );
+    return this.http.get("https://fakestoreapi.com/products");
   }
 
   get(id: string): Observable<Products> {
@@ -30,4 +44,6 @@ export class ProductsService {
   delete(id: string) {
     return this.http.delete<Products>(this.baseUrl + '/' + id);
   }
+
+
 }
