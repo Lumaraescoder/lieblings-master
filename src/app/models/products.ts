@@ -1,12 +1,14 @@
 export class Products {
-  id: number;
-  name: string;
-  capital: string;
-  price: number;
+  id?: number;
+  title?: string;
+  price?: number;
+  description?: string;
   category: string;
-  countInStock: number;
-  description: string;
-  rating: number;
-  numReviews: number;
-  reviews: [];
+  image?: string;
+  rating?: Rating;
+}
+
+export class Rating {
+  rate: number;
+  count: number;
 }
