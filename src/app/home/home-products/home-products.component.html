@@ -5,7 +5,7 @@
       <h4 class="ll-section-head__subheading">Direct purchase & partly also as a subscription</h4>
     </div>
     <div class="grid grid-cols-12 gap-6 xxl:gap-8">
-      <div *ngFor="let product of products" class="col-span-12 md:col-span-6 xl:col-span-4">
+      <div *ngIf="let product of products" class="col-span-12 md:col-span-6 xl:col-span-4">
         <mat-card class="ll-product">
           <img mat-card-image [src]="product?.image" alt="{{ product?.image }}"
             style=" max-height:  250px; margin: 0 0 20px" />

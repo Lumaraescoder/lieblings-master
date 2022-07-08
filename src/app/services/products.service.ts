@@ -27,6 +27,13 @@ export class ProductsService {
         catchError(this.handleErrors(`getProducts`, []))
       );
   }
+  getProductById(id: string): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.baseUrl}/${id}`)
+      .pipe(
+        tap(products => console.log('fetch products')),
+        catchError(this.handleErrors(`getProductById id=${id}`, []))
+      );
+  }
 
   get(id: string): Observable<Products> {
     return this.http.get<Products>(this.baseUrl + '/' + id);
