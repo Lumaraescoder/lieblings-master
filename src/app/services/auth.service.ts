@@ -1,12 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor() {}
-  login(email: string, password: string): Observable<string> {
-    throw new Error('not implemented');
+  url: string;
+  constructor(private http: HttpClient) {
+    this.url = 'https://fakestoreapi.com/auth/login';
+  }
+
+  authenticateUser(data) {
+    return this.http.post(this.url, data)
+  }
+
+  setBearerToken(token) {
+    localStorage.setItem('bearerToken', token);
+  }
+
+  getBearerToken() {
+    return localStorage.getItem('bearerToken');
+  }
+
+  isUserAuthenticated(token): Promise<any> {
+    return this.http.post(this.url + 'isAuthenticated', {}, {
+      headers: { Authorization: 'Bearer ' + token }
+    }).pipe(map(res => res['isAuthenticated'])).toPromise();
   }
 }
