@@ -10,18 +10,18 @@ import { Subject } from 'rxjs';
   styleUrls: ['./home-products.component.scss']
 })
 export class HomeProductsComponent implements OnInit {
-  public products: any = [];
+  public products: Products[] = [];
   isLoading = true;
   constructor(private service: ProductsService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(): void {
     this.service.getAllProducts().subscribe((data) => {
       this.products = data;
       console.log(data)
     });
   }
-
-  // getProducts(): void {
-
-  // }
 }

@@ -19,14 +19,20 @@ export class ProductsService {
       return of(result as T);
     };
   }
-  getAllProducts() {
-    // let headers = new HttpHeaders().set('content-Type', 'applicatios/json');
-    // return this.http.get<Products[]>(this.baseUrl)
-    //   .pipe(
-    //     // tap(products => console.log(products)),
-    //     catchError(this.handleErrors<Products[]>('getHeroes', []))
-    //   );
-    return this.http.get("https://fakestoreapi.com/products");
+
+  getAllProducts(): Observable<Products[]> {
+    return this.http.get<Products[]>(this.baseUrl)
+      .pipe(
+        tap(products => console.log('fetch products')),
+        catchError(this.handleErrors(`getProducts`, []))
+      );
+  }
+  getProductById(id: string): Observable<Products[]> {
+    return this.http.get<Products[]>(`${this.baseUrl}/${id}`)
+      .pipe(
+        tap(products => console.log('fetch products')),
+        catchError(this.handleErrors(`getProductById id=${id}`, []))
+      );
   }
 
   get(id: string): Observable<Products> {
