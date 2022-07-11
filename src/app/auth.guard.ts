@@ -1,44 +1,29 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree, CanActivate } from '@angular/router';
+import { ActivatedRouteSnapshot, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree, CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { RoutesService } from './services/routes.service'
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanLoad {
 
-  token: string;
-  constructor(private routerService: RoutesService, private authenticationService: AuthService) {
-    this.token = this.authenticationService.getBearerToken();
-  }
-  canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return new Promise((resolve, reject) => {
-      this.authenticationService.isUserAuthenticated(this.token).then((data: any) => {
-        if (!data) {
-          reject(false);
-          this.routerService.routeToLogin();
-        } else {
-          resolve(true);
-        }
-      })
-    })
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router) { }
+
+  canActivate(): boolean | UrlTree {
+    if (this.authService.isUserAuthenticated) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
-  // canActivate(
-  //   next: ActivatedRouteSnapshot,
-  //   state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-  //   return new Promise((resolve, reject) => {
-  //     console.log("CanActivateRouteGuard token" + this.token);
-  //     this.authenticationService.isUserAuthenticated(this.token).then((data) => {
-  //       if (!data) {
-  //         reject(false);
-  //         this.routerService.routeToLogin();
-  //       } else {
-  //         resolve(true);
-  //       }
-  //     });
-  //   }
-  //   );
-  // }
+  canActivateChild(): boolean | UrlTree {
+    return this.canActivate();
+  }
+
+  canLoad(): boolean | UrlTree {
+    return this.canActivate();
+  }
 }

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/components/layouts/base-layout/base-layout.component';
-import { AuthGuard } from './auth.guard';
+
 import { Location } from '@angular/common';
+import { AuthGuard } from './auth.guard';
 
 const baseLayoutRouting: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
   }
 ];
 
@@ -51,6 +52,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled'
     })
   ],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

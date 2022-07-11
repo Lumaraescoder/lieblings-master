@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
+
   url: string;
   constructor(private http: HttpClient) {
     this.url = 'https://fakestoreapi.com/auth/login';
@@ -25,7 +26,7 @@ export class AuthService {
 
 
   isUserAuthenticated(token): Promise<any> {
-    return this.http.post(this.url, {}, {
+    return this.http.post(this.url, {
       headers: { Authorization: 'Bearer ' + token }
     }).pipe(map(res => res['isAuthenticated'])).toPromise();
   }
