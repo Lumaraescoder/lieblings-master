@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './shared/components/layouts/base-layout/base-layout.component';
 
+import { Location } from '@angular/common';
+import { AuthGuard } from './auth.guard';
+
 const baseLayoutRouting: Routes = [
   {
     path: 'products',
@@ -38,7 +41,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [AuthGuard],
   }
 ];
 
@@ -48,6 +52,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled'
     })
   ],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
