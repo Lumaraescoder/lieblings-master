@@ -22,13 +22,14 @@ export class LoginComponent implements OnInit {
     if (this.username.valid && this.password.valid) {
       this.authentication.authenticateUser({ "username": this.username.value, "password": this.password.value }).subscribe(
         (data) => {
-
           this.submitMessage = "";
           this.authentication.setBearerToken(data['token']);
           localStorage.setItem('isLoggedIn', 'true');
           this.router.routeToDashboard();
           console.log(data);
-          // console.log(this.submitMessage)
+          console.log(this.submitMessage)
+
+          console.log('auth', this.authentication)
         },
         (error) => {
           if (error.status === 403) this.submitMessage = "Unauthorized"

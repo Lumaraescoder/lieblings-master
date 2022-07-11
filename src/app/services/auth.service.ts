@@ -23,6 +23,7 @@ export class AuthService {
     return localStorage.getItem('bearerToken');
   }
 
+
   isUserAuthenticated(token): Promise<any> {
     return this.http.post(this.url, {}, {
       headers: { Authorization: 'Bearer ' + token }
