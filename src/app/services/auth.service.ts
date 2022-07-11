@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   isUserAuthenticated(token): Promise<any> {
-    return this.http.post(this.url + 'isAuthenticated', {}, {
+    return this.http.post(this.url, {}, {
       headers: { Authorization: 'Bearer ' + token }
     }).pipe(map(res => res['isAuthenticated'])).toPromise();
   }
