@@ -10,21 +10,17 @@
           </button>
         </div>
         <div class="mt-3 flex">
-          <input
-            type="text"
-            placeholder="I am looking for ..."
-            class="flex-1 w-full sm:text-sm lg:text-xl border-gray-300 rounded-l-md py-3 px-6"
-            required
-          />
-          <button class="bg-primary w-24 rounded-r-md"><mat-icon class="leading-8">search</mat-icon></button>
+          <input type="text" placeholder="I am looking for ..."
+            class="flex-1 w-full sm:text-sm lg:text-xl border-gray-300 rounded-l-md py-3 px-6" required />
+          <button class="bg-primary w-24 rounded-r-md">
+            <mat-icon class="leading-8">search</mat-icon>
+          </button>
         </div>
       </div>
       <mat-expansion-panel [expanded]="advanceSearchExpanded">
         <div class="grid grid-cols-6 gap-6 mt-4">
           <div class="col-span-6 sm:col-span-3">
-            <input
-              type="text"
-              class="
+            <input type="text" class="
                 mt-1
                 focus:ring-indigo-500
                 focus:border-indigo-500
@@ -34,14 +30,10 @@
                 sm:text-sm
                 border-gray-300
                 rounded-md
-              "
-              placeholder="Start price"
-            />
+              " placeholder="Start price" />
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <input
-              type="text"
-              class="
+            <input type="text" class="
                 mt-1
                 focus:ring-indigo-500
                 focus:border-indigo-500
@@ -51,14 +43,10 @@
                 sm:text-sm
                 border-gray-300
                 rounded-md
-              "
-              placeholder="End price"
-            />
+              " placeholder="End price" />
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <select
-              name="categories"
-              class="
+            <select name="categories" class="
                 mt-1
                 block
                 w-full
@@ -72,8 +60,7 @@
                 focus:ring-indigo-500
                 focus:border-indigo-500
                 sm:text-sm
-              "
-            >
+              ">
               <option>Category</option>
               <option>Microservices</option>
               <option>Shipping Service</option>
@@ -81,9 +68,7 @@
             </select>
           </div>
           <div class="col-span-6 sm:col-span-3">
-            <select
-              name="rating"
-              class="
+            <select name="rating" class="
                 mt-1
                 block
                 w-full
@@ -97,8 +82,8 @@
                 focus:ring-indigo-500
                 focus:border-indigo-500
                 sm:text-sm
-              "
-            >
+              ">
+              asdsadasd
               <option>Rating</option>
               <option>1</option>
               <option>2</option>
@@ -120,12 +105,8 @@
     <div class="grid grid-cols-12 gap-6 xxl:gap-8" *ngIf="isLoaded">
       <div *ngFor="let product of products" class="col-span-12 md:col-span-6 xl:col-span-4">
         <mat-card class="ll-product">
-          <img
-            mat-card-image
-            [src]="product?.images[0]"
-            alt="{{ product.name }}"
-            style="width: 100%; margin: 0 0 20px"
-          />
+          <img mat-card-image [src]="product?.images[0]" alt="{{ product.name }}"
+            style="width: 100%; margin: 0 0 20px" />
           <mat-card-content class="flex">
             <div class="flex-none w-10">
               <img src="{{ product?.created_by?.avatar }}" alt="product?.created_by?.name" />
@@ -153,15 +134,11 @@
       </div>
     </div>
     <div *ngIf="!isLoaded">
-      <ngx-skeleton-loader
-        count="9"
-        appearance="circle"
-        [theme]="{
+      <ngx-skeleton-loader count="9" appearance="circle" [theme]="{
           'border-radius': '5px',
           height: '280px',
           width: 'calc(33% - 10px)'
-        }"
-      ></ngx-skeleton-loader>
+        }"></ngx-skeleton-loader>
     </div>
   </div>
 </div>
@@ -175,14 +152,18 @@
           Post Requirements and let our consultants make an individual offer
         </h3>
         <h5 class="_card__paragraph font-light text-black mt-3">Talent marketplace</h5>
-        <a href="" mat-fab color="warn" class="float-right mt-"><mat-icon>arrow_forward</mat-icon></a>
+        <a href="" mat-fab color="warn" class="float-right mt-">
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
       </div>
       <div class="_card bg-white rounded-md ml-auto">
         <h3 class="_card__title font-normal text-black">
           Post a problem and we will look for talented and skillful suitable advisors.
         </h3>
         <h5 class="_card__paragraph font-light text-black mt-3">Scouting</h5>
-        <a href="" mat-fab color="warn" class="float-right mt-"><mat-icon>arrow_forward</mat-icon></a>
+        <a href="" mat-fab color="warn" class="float-right mt-">
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
       </div>
     </div>
   </div>
